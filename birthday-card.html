@@ -5,34 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funny Birthday Generator</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .container { margin-top: 50px; }
-        .message { margin-top: 20px; font-size: 1.5em; color: #4CAF50; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .message {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            min-height: 80px;
+            font-size: 1.2em;
+            color: #333;
+            border-left: 5px solid #667eea;
+            animation: slideIn 0.5s;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Funny Birthday Generator</h1>
-        <input type="text" id="name" placeholder="Enter your name"><br><br>
-        <input type="number" id="age" placeholder="Enter your age"><br><br>
-        <input type="text" id="hobby" placeholder="Enter your hobby"><br><br>
-        <button onclick="generateMessage()">Generate Message</button>
-        <div class="message" id="message"></div>
+        <h1>🎂 Birthday Generator</h1>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Enter your name"><br>
+        </div>
+        <div class="input-group">
+            <input type="number" id="age" placeholder="Enter your age"><br>
+        </div>
+        <div class="input-group">
+            <input type="text" id="hobby" placeholder="Enter your hobby"><br>
+        </div>
+        <button onclick="generateMessage()">Generate Funny Message</button>
+        <div class="message" id="message">Click the button to generate your birthday message!</div>
     </div>
+
     <script>
         function generateMessage() {
-            const name = document.getElementById('name').value;
-            const age = document.getElementById('age').value;
-            const hobby = document.getElementById('hobby').value;
+            const name = document.getElementById('name').value || 'Friend';
+            const age = document.getElementById('age').value || '?';
+            const hobby = document.getElementById('hobby').value || 'doing cool stuff';
 
-            const messages = [
-                `Happy ${age}th Birthday, ${name}! Remember, age is just a number... in your case, a really high one!`,
-                `Cheers to ${age} years, ${name}! Just think of all the hobbies you’ll not be good at this year! Keep practicing!`,
-                `Happy Birthday, ${name}! At ${age}, you're still younger than you will be next year!`,
-                `Another year older, ${name}! Don't worry, ${hobby} didn't get any better with age either!`
+            const jokes = [
+                `🎉 Happy ${age}th Birthday, ${name}! You're not old, you're just retro!`,
+                `🎂 Congrats ${name}! At ${age}, you've earned the right to complain about your back!`,
+                `🥳 Happy ${age}th Birthday! Don't worry, you're still younger than you'll be next year!`,
+                `🎊 ${name}, ${age} years young! Your ${hobby} skills are still improving... slowly!`,
+                `🎈 Happy Birthday, ${name}! The good news: you're not dead yet!`,
+                `🎉 ${name} is ${age}! Time flies when you're having fun... or getting old!`,
+                `🥳 Another year older, ${name}! At least your ${hobby} hobby keeps you young at heart!`,
+                `🎂 Happy ${age}th Birthday, ${name}! Age is just a number... a really big number!`,
+                `🎊 ${name}, you've officially reached peak ${hobby} skills at ${age}... or close to it!`,
+                `🎈 Happy Birthday, ${name}! ${age} years and still rocking the ${hobby} scene! 🎮`,
+                `🎉 Congrats ${name}! You're now ${age}% closer to getting senior discounts!`,
+                `🥳 Happy Birthday to ${name}! ${age} is the new... well, ${age}!`,
+                `🎂 ${name}, ${age} candles would cost more than your cake at this point!`,
+                `🎊 Another year, another chance to dominate at ${hobby}, ${name}! (or at least try!)`,
+                `🎈 Happy ${age}th Birthday, ${name}! You're not aging, you're leveling up!`
             ];
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.getElementById('message').innerText = messages[randomIndex];
+
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById('message').innerText = randomJoke;
         }
     </script>
 </body>
