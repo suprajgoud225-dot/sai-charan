@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Birthday Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { margin-top: 50px; }
+        .message { margin-top: 20px; font-size: 1.5em; color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Funny Birthday Generator</h1>
+        <input type="text" id="name" placeholder="Enter your name"><br><br>
+        <input type="number" id="age" placeholder="Enter your age"><br><br>
+        <input type="text" id="hobby" placeholder="Enter your hobby"><br><br>
+        <button onclick="generateMessage()">Generate Message</button>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        function generateMessage() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const hobby = document.getElementById('hobby').value;
+
+            const messages = [
+                `Happy ${age}th Birthday, ${name}! Remember, age is just a number... in your case, a really high one!`,
+                `Cheers to ${age} years, ${name}! Just think of all the hobbies you’ll not be good at this year! Keep practicing!`,
+                `Happy Birthday, ${name}! At ${age}, you're still younger than you will be next year!`,
+                `Another year older, ${name}! Don't worry, ${hobby} didn't get any better with age either!`
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('message').innerText = messages[randomIndex];
+        }
+    </script>
+</body>
+</html>
